@@ -13,6 +13,9 @@ class Par <P>{
 	public Par<P> swap(){
 		return new Par<P>(b,a);
 	}
+	public String toString(){
+		return this.a+":"+this.b;
+	}
 }
 
 
