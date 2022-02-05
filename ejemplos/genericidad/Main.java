@@ -10,7 +10,8 @@ class Main {
 		//CAJA
 		Caja<Integer> ci = new Caja<Integer>();
 		ci.put(15);
-		System.out.println(ci.get()+5);
+		Caja.ponEnCaja(16, ci);
+		//System.out.println(ci.get()+5);
 		System.out.println(ci.get().toString());
 
 
