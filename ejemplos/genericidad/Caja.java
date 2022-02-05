@@ -14,6 +14,10 @@ class Caja <T>{
 	public void put(T ele){
 		this.elemento = ele;
 	}
+
+	public static <L> void ponEnCaja(L dato, Caja<L> caja){
+		caja.put(dato);
+	}
 }
 
 
