@@ -1,1 +1,1 @@
-# Estructura de Dato y Algoritmos
+# Estructura de Datos y Algoritmos
