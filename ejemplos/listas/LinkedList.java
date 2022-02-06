@@ -58,13 +58,34 @@ class LinkedList {
 	}
 
 	public void delete(String dat){
-	
+		if(head != null){
+			if(head.data.compareTo(dat) == 0){
+				head = head.next;
+			}else{
+				Node anterior = head;
+
+				while(anterior.next != null){
+					if(anterior.next.data.compareTo(dat) == 0)
+						break;
+					anterior = anterior.next;
+				}
+				
+				if(anterior.next != null){
+					anterior.next = anterior.next.next;
+				}
+				
+			}
+		}
+	}
+
+	public void deleteK(int index){
+		//implementar
 	}
 
 	public String toString(){
 		String out = "";
 		Node aux = head;
-		
+
 		while(aux != null){
 			out += aux.data.toString()+" - ";
 			aux = aux.next;
