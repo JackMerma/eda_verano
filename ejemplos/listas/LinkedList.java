@@ -28,14 +28,28 @@ class LinkedList {
 			Node aux = new Node(dat, head);
 			head = aux;
 		}
+		cant++;
 	}
 
 	public void add(String dat, int index){
 		//implementar
 	}
 	
-	public String search(String dat){
-		return "";
+	public int search(String dat){
+		int pos = 0;
+		Node aux = head;
+
+		while(aux != null){//(pos < cant)
+			String cadena = aux.data;
+
+			if(dat.compareTo(cadena) == 0)
+				return pos;
+
+			pos++;
+			aux = aux.next;
+		}
+
+		return -1;
 	}
 
 	public String searchK(int index){
@@ -52,7 +66,7 @@ class LinkedList {
 		Node aux = head;
 		
 		while(aux != null){
-			out += aux.toString()+" - ";
+			out += aux.data.toString()+" - ";
 			aux = aux.next;
 		}
 		return out;
