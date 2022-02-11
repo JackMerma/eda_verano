@@ -2,14 +2,14 @@
 
 # Notas
 
-	+ La cabecera de tu estructura genérica debe ser de la forma
-		```java
-		//...
++ La cabecera de tu estructura genérica debe ser de la forma
 
-		public class LinkedList<T extends Comparable<T>>{
-			//...
-		}
+```java
+...
+public class LinkedList<T extends Comparable<T>>{
+	...
+}
+...
+```
 
-		//...
-		```
-	+ Prueba cosas pequeñas y que funcionen (incremental)
++ Prueba cosas pequeñas y que funcionen (incremental)
