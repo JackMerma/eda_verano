@@ -22,11 +22,11 @@ public class ArregloList<T extends Comparable<T>>{
 	//principales metodos
 	
 	public boolean isEmpty(){
-		return added == 0;
+		return this.added == 0;
 	}
 
 	public void add(T dat, int index){
-		list[index] = dat;
+		this.list[index] = dat;
 	}
 	
 	public int search(T dat){
@@ -37,9 +37,16 @@ public class ArregloList<T extends Comparable<T>>{
 	}
 
 	public T get(int index){
+		if(index < 0 || index >= total)
+			System.out.println("Out of range");
+		return this.list[index];
 	}
 
 	public void delete(T dat){
+		int index = this.search(dat);
+
+		if(index != -1)
+			this.list[index] = null;
 	}
 
 	public void delete(int index){
