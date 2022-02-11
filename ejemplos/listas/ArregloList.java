@@ -9,22 +9,36 @@ import java.util.*;
 
 public class ArregloList<T extends Comparable<T>>{
 
-	private T[] list;
-	private int total;
-	private int added = 0;
+	private T[] list; // arreglo estándar a usar
+	private int total; // total de datos 
+	private int added = 0; // añadidos
 
+	/**
+	 * Constructor ArregloList
+	 * 	Es necesario indicar la cantidad de datos
+	 */
 	public ArregloList(int n){
-		//cast necesario
+		//cast necesario para poder comparar datos (en vez de Object)
 		this.list = (T[])new Comparable[n];
 		this.total = n;
 	}
 
 	//principales metodos
 	
+	/**
+	 * Metodo isEmpty
+	 * 	Indica si la estructura esta vacia
+	 * 	Complejidad : O(1) 
+	 */
 	public boolean isEmpty(){
 		return this.added == 0;
 	}
 
+	/**
+	 * Metodo add
+	 * 	Añade un dato generico en la posicion indicada
+	 * 	Complejidad : O(1) 
+	 */
 	public void add(T dat, int index){
 		if(index < 0 || index >= total){
 			System.out.println("Out of range");
@@ -35,12 +49,23 @@ public class ArregloList<T extends Comparable<T>>{
 		this.list[index] = dat;
 	}
 	
+	/**
+	 * Metodo search
+	 * 	Busca un elemento mediante un dato generico enviado
+	 * 	Complejidad : O(n) 
+	 */
 	public int search(T dat){
 		for(int i = 0; i < this.total; i++)
 			if(list[i] != null && this.list[i].compareTo(dat) == 0)
 				return i;
 		return -1;
 	}
+
+	/**
+	 * Metodo get
+	 * 	retorna un dato en la posicion indicada
+	 * 	Complejidad : O(1) 
+	 */ 
 
 	public T get(int index){
 		if(index < 0 || index >= total){
@@ -50,6 +75,11 @@ public class ArregloList<T extends Comparable<T>>{
 		return this.list[index];
 	}
 
+	/**
+	 * Metodo delete
+	 * 	Elimina un dato enviado
+	 * 	Complejidad : O(n) 
+	 */
 	public void delete(T dat){
 		int index = this.search(dat);
 
@@ -59,6 +89,11 @@ public class ArregloList<T extends Comparable<T>>{
 		}
 	}
 
+	/**
+	 * Metodo delete
+	 * 	Elimina un dato mediante una posicion
+	 * 	Complejidad : O(1) 
+	 */
 	public void delete(int index){
 		if(index < 0 || index >= total){
 			System.out.println("Out of range");
@@ -70,11 +105,21 @@ public class ArregloList<T extends Comparable<T>>{
 		}
 	}
 
+	/**
+	 * Metodo remove
+	 * 	Elimina los datos de la estructura
+	 * 	Complejidad : O(1) 
+	 */
 	public void remove(){
 		this.list = (T[])new Comparable[total];
 		this.added = 0;
 	}
 
+	/**
+	 * Metodo toString
+	 * 	Devuelve informacion de la estructura
+	 * 	Complejidad : O(n) 
+	 */
 	public String toString(){
 		String out = "";
 		if(!this.isEmpty()){
