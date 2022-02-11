@@ -75,6 +75,14 @@ public class ArregloList<T extends Comparable<T>>{
 	}
 
 	public String toString(){
+		String out = "";
+		if(!this.isEmpty()){
+			for(int i = 0;i < this.total - 1; i++){
+				out += this.list[i] + " - ";
+			}
+			out += this.list[this.total-1];
+		}
+		return out;
 	}
 }
 
