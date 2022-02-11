@@ -15,7 +15,7 @@ public class ArregloList<T extends Comparable<T>>{
 
 	public ArregloList(int n){
 		//cast necesario
-		this.list = (T[])new Object[n];
+		this.list = (T[])new Comparable[n];
 		this.total = n;
 	}
 
@@ -30,8 +30,9 @@ public class ArregloList<T extends Comparable<T>>{
 			System.out.println("Out of range");
 			return ;
 		}
+		if(this.list[index] ==  null)
+			added++;
 		this.list[index] = dat;
-		added++;
 	}
 	
 	public int search(T dat){
@@ -70,7 +71,7 @@ public class ArregloList<T extends Comparable<T>>{
 	}
 
 	public void remove(){
-		this.list = (T[])new Object[total];
+		this.list = (T[])new Comparable[total];
 		this.added = 0;
 	}
 
