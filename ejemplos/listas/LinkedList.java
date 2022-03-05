@@ -64,9 +64,6 @@ class LinkedList {
 	public void delete(String dat){
 		if(head != null){
 			if(head.data.compareTo(dat) == 0){
-				//inicio
-				// abc -> null ---> null
-				// abc -> dfg -> ... -> null
 				head = head.next;
 			}else{
 				Node actual = this.head.next;
