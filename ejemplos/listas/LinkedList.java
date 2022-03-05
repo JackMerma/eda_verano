@@ -31,7 +31,7 @@ class LinkedList {
 		cant++;
 	}
 
-	public void add(String dat, int index){
+	public void add(String dat){
 		//implementar
 	}
 	
