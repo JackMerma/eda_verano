@@ -30,7 +30,7 @@ public class LinkedList {
 			head = new Node(dat, null);
 		}else{
 			Node aux = new Node(dat, head);
-			head = aux;
+			this.head = aux;
 		}
 		cant++;
 	}
@@ -121,30 +121,30 @@ public class LinkedList {
 	}
 
 	public void deleteK(int index){
+
+		if(index < 0 || index > cant-1)
+			return ;
+
 		//implementar
-		int pos = 0;
 		if(head != null){
-			if(pos == index){
+			if(index == 0){
 				head = head.next;
 			}else{
 				Node actual = this.head.next;
 				Node anterior = this.head;
 
-				while(actual != null && index!=pos){
+				int pos = 1;
+				
+				while(actual != null && pos<index){
 					actual = actual.next;
 					anterior = anterior.next;
-					pos--;
-					break;
+					pos++;
 				}
 
-				if(actual != null){
-					anterior.next = actual.next;
-					pos--;
-				}
-				
+				anterior.next = actual.next;
+				cant--;
 			}
-			
-		}pos--;
+		}
 	}
 
 	public String toString(){
