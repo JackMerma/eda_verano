@@ -1,9 +1,5 @@
-/**
- * @author      : Jackson Merma (mermaportocarreroj@gmail.com)
- * @created     : 06/02/2022
- * @filename    : Prueba
- */
-class Prueba {
+
+public class Prueba {
 	public static void main(String [] args){
 		System.out.println("------------------------------------------------------------------------------");
 
@@ -12,19 +8,37 @@ class Prueba {
 
 		LinkedList lista = new LinkedList();
 		String nombres[] = {"Pedro", "Juan", "Diego"};
-
+		
+		LinkedList lista2 = new LinkedList();
+		
 		for(int i = 0;i < nombres.length; i++){
 			lista.put(nombres[i]);
 			System.out.println(lista);
 		}
-
+		System.out.println("barbara:");
+		for(int i = 0;i < nombres.length; i++){
+			lista2.add(nombres[i]);
+			System.out.println(lista2);
+		}System.out.println("asi queda"+lista2);
+		
+        System.out.println("fin barbara");
 		//Busquedas
 		int busq1 = lista.search("Pedro");
 		int busq2 = lista.search("Jack");
-
+		String b1 = lista.searchK(2);
+ 
 		System.out.println(busq1);
 		System.out.println(busq2);
-
+		System.out.println(" funciona");
+        System.out.println(b1);
+        
+        System.out.println("borradno");
+        lista.deleteK(0);
+        for(int i = 0;i < nombres.length; i++){
+			lista.put(nombres[i]);
+			System.out.println(lista);
+		}
+        System.out.println("fin");
 
 		//Eliminacion
 		lista.delete("Pedro");
@@ -68,28 +82,26 @@ class Prueba {
 		System.out.println(names.isEmpty());
 
 
-		//Prueba para un Stack
-		System.out.println("-----------Stack------------");
-		Stack stack = new Stack();
-
-		stack.push(5);
-		stack.push(4);
-		stack.push(3);
-		stack.push(2);
-		stack.push(1);
-
-		System.out.println(stack);
-		System.out.println("ultimo dato " + stack.top());
-
-		int suma = 0;
-
-		while(!stack.isEmpty()){
-			System.out.println("Sumando el "+stack.top());
-			suma += stack.pop();
-		}
-
-		System.out.println("Suma: " + suma);
+//		//Prueba para un Stack
+//		System.out.println("-----------Stack------------");
+//		Stack stack = new Stack();
+//
+//		stack.push(5);
+//		stack.push(4);
+//		stack.push(3);
+//		stack.push(2);
+//		stack.push(1);
+//
+//		System.out.println(stack);
+//		System.out.println("ultimo dato " + stack.top());
+//
+//		int suma = 0;
+//
+//		while(!stack.isEmpty()){
+//			System.out.println("Sumando el "+stack.top());
+//			suma += stack.pop();
+//		}
+//
+//		System.out.println("Suma: " + suma);
 	}
 }
-
-
