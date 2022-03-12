@@ -36,28 +36,17 @@ public class LinkedList {
 	}
 
 	public void add(String dat){
-//		Node auxi=new Node(dat, null);;
-//		if(head == null){
-//			head = new Node(dat, null);
-//		}else{
-//			auxi=head;
-//			Node aux = new Node(dat, auxi);
-//			//head = aux;
-//		}
-		//cant++;
-		head=null;
-		Node auxD;
-		if(head != null){
-			auxD= new Node(dat,null);
-//			Node aux = new Node(auxD.data,null);
-//			head = new Node(dat, auxD);
-//			auxD.next = aux;
-//			//head = aux;
+		if(this.head == null){
+			this.head = new Node(dat, null);
 		}else{
-			auxD=null;
+			Node aux = this.head;
+
+			while(aux.next != null)
+				aux = aux.next;
+
+			aux.next = new Node(dat, null);
 		}
-		head = new Node(dat, auxD);
-		cant++;
+		this.cant ++;
 	}
 	
 	public int search(String dat){

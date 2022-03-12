@@ -18,7 +18,7 @@ public class Prueba {
 		//System.out.println("barbara:");
 
 		for(int i = 0;i < nombres.length; i++){
-			lista2.put(nombres[i]);
+			lista2.add(nombres[i]);
 			System.out.println(lista2);
 		}
 
