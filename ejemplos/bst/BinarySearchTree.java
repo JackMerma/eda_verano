@@ -157,6 +157,7 @@ public class BinarySearchTree <T extends Comparable<T>>{
 	public void searchLessThan(T dat){
 		System.out.print("Menores que " + dat + ":");
 		searchLessThanRecursive(dat, this.root);
+		System.out.println();
 	}
 
 	private void searchLessThanRecursive(T dat, Node node){
@@ -169,8 +170,20 @@ public class BinarySearchTree <T extends Comparable<T>>{
 		}
 	}
 
-	public String searchGreaterThan(T dat){
-		return null;
+	public void searchGreaterThan(T dat){
+		System.out.print("Mayores que " + dat + ":");
+		searchGreaterThanRecursive(dat, this.root);
+		System.out.println();
+	}
+
+	private void searchGreaterThanRecursive(T dat, Node node){
+		if(node != null){
+			if(dat.compareTo(node.data) < 0){
+				searchGreaterThanRecursive(dat, node.left);
+				System.out.print(node.data + " ");
+			}
+			searchGreaterThanRecursive(dat, node.right);
+		}
 	}
 
 	public T searchAtPosition(int k){
@@ -229,6 +242,7 @@ public class BinarySearchTree <T extends Comparable<T>>{
 		bst.postOrden();
 		System.out.println("En posicion 5:" + bst.searchAtPosition(5));
 		bst.searchLessThan(2);
+		bst.searchGreaterThan(10);
 		//bst.delete(-1);
 		//bst.inOrden();
 		//
