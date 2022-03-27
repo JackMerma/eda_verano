@@ -16,27 +16,20 @@ public class BinarySearchTree <T extends Comparable<T>>{
 			left = l;
 		}
 
-		public Node(){
-			this(null, null, null);
-		}
 	}
 
 	Node root = null;
 
 	//methods
 	public void add(T dat){
-		if(root == null){
-			this.root = new Node(dat, null, null);
-		}else{
-			this.root = addRecursive(dat, root);
-		}
+		this.root = addRecursive(dat, root);
 	}
 
 	private Node addRecursive(T dat, Node node){
 		if(node == null){
 			return new Node(dat, null, null);
 		}else{
-			Node aux = new Node();
+			Node aux = node;
 			if(dat.compareTo(node.data) > 0){
 				aux.right = addRecursive(dat,node.right);
 			}else{
@@ -55,16 +48,23 @@ public class BinarySearchTree <T extends Comparable<T>>{
 	}
 
 	//recorridos
-	public String inOrden(){
-		return null;
+	public void inOrden(){
+		System.out.print("InOrden:");
+		inOrderRecursive(this.root);
 	}
 
-	public String preOrden(){
-		return null;
+	private void inOrderRecursive(Node node){
+		if(node != null){
+			inOrderRecursive(node.left);
+			System.out.print(node.data + " ");
+			inOrderRecursive(node.right);
+		}
 	}
 
-	public String postOrden(){
-		return null;
+	public void preOrden(){
+	}
+
+	public void postOrden(){
 	}
 
 	//retos
@@ -81,7 +81,14 @@ public class BinarySearchTree <T extends Comparable<T>>{
 	}
 
 	public static void main(String [] args){
-		//code
+		BinarySearchTree<Integer> bst = new BinarySearchTree<Integer>();
+
+		int [] data = {9,2,5,7,1,35,7,88,9,3};
+
+		for(int i=0;i<data.length;i++)
+			bst.add(data[i]);
+
+		bst.inOrden();
 	}
 }
 
