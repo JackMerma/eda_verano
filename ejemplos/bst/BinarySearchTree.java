@@ -39,8 +39,22 @@ public class BinarySearchTree <T extends Comparable<T>>{
 		}
 	}
 
-	public T search (T dat){
-		return null;
+	public String search (T dat){
+		Node aux = this.root;
+
+		while(aux != null){
+			int value = dat.compareTo(aux.data);
+			
+			if(value == 0){
+				return dat + " encontrado :)";
+			}else if(value < 0){
+				aux = aux.left;
+			}else{
+				aux = aux.right;
+			}
+		}
+
+		return dat + " no encontrado :(";
 	}
 
 	public void delete(T dat){
@@ -51,6 +65,7 @@ public class BinarySearchTree <T extends Comparable<T>>{
 	public void inOrden(){
 		System.out.print("InOrden:");
 		inOrderRecursive(this.root);
+		System.out.println();
 	}
 
 	private void inOrderRecursive(Node node){
@@ -83,12 +98,15 @@ public class BinarySearchTree <T extends Comparable<T>>{
 	public static void main(String [] args){
 		BinarySearchTree<Integer> bst = new BinarySearchTree<Integer>();
 
-		int [] data = {9,2,5,7,1,35,7,88,9,3};
+		int [] data = {9,2,5,7,1,35,88,9,3};
 
 		for(int i=0;i<data.length;i++)
 			bst.add(data[i]);
 
 		bst.inOrden();
+
+		System.out.println(bst.search(100000));
+		System.out.println(bst.search(7));
 	}
 }
 
