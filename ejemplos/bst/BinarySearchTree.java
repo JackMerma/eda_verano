@@ -163,7 +163,31 @@ public class BinarySearchTree <T extends Comparable<T>>{
 	}
 
 	public T searchAtPosition(int k){
-		return null;
+		return searchAtPositionRecursive(k, this.root);
+	}
+
+	private T searchAtPositionRecursive(int k, Node node){
+		if(node == null){
+			System.out.println("No existe >:v");
+			return null;
+		}
+
+		int count = countLeftSubarbol(node.left) + 1;
+		 if(count == k){
+			 return node.data;
+		 }else if(count < k){
+			return searchAtPositionRecursive(k - count, node.right);
+		 }else{
+			return searchAtPositionRecursive(k, node.left);
+		 }
+	}
+
+	private int countLeftSubarbol(Node node){
+		if(node != null){
+			return 1 + countLeftSubarbol(node.left) + countLeftSubarbol(node.right);
+		}else{
+			return 0;
+		}
 	}
 
 	public static void main(String [] args){
@@ -192,14 +216,13 @@ public class BinarySearchTree <T extends Comparable<T>>{
 		bst.inOrden();
 		bst.preOrden();
 		bst.postOrden();
-		bst.delete(-1);
-		bst.inOrden();
-
-		//System.out.println(bst.search(100000));
-		//System.out.println(bst.search(7));
-		//bst.delete(11);
-
+		System.out.println("En posicion 5:" + bst.searchAtPosition(5));
+		//bst.delete(-1);
 		//bst.inOrden();
+		//
+
+
+
 	}
 }
 
