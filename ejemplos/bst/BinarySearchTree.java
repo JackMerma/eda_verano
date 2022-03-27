@@ -136,6 +136,17 @@ public class BinarySearchTree <T extends Comparable<T>>{
 	}
 
 	public void postOrden(){
+		System.out.print("PostOrden:");
+		postOrdenRecursive(this.root);
+		System.out.println();
+	}
+
+	private void postOrdenRecursive(Node node){
+		if(node != null){
+			postOrdenRecursive(node.left);
+			postOrdenRecursive(node.right);
+			System.out.print(node.data + " ");
+		}
 	}
 
 	//retos
@@ -161,6 +172,7 @@ public class BinarySearchTree <T extends Comparable<T>>{
 
 		bst.inOrden();
 		bst.preOrden();
+		bst.postOrden();
 
 		//System.out.println(bst.search(100000));
 		//System.out.println(bst.search(7));
