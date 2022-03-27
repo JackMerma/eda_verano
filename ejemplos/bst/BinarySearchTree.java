@@ -154,8 +154,19 @@ public class BinarySearchTree <T extends Comparable<T>>{
 	}
 
 	//retos
-	public String searchLessThan(T dat){
-		return null;
+	public void searchLessThan(T dat){
+		System.out.print("Menores que " + dat + ":");
+		searchLessThanRecursive(dat, this.root);
+	}
+
+	private void searchLessThanRecursive(T dat, Node node){
+		if(node != null){
+			searchLessThanRecursive(dat, node.left);
+			if(dat.compareTo(node.data) > 0){
+				System.out.print(node.data + " ");
+				searchLessThanRecursive(dat, node.right);
+			}
+		}
 	}
 
 	public String searchGreaterThan(T dat){
@@ -217,6 +228,7 @@ public class BinarySearchTree <T extends Comparable<T>>{
 		bst.preOrden();
 		bst.postOrden();
 		System.out.println("En posicion 5:" + bst.searchAtPosition(5));
+		bst.searchLessThan(2);
 		//bst.delete(-1);
 		//bst.inOrden();
 		//
