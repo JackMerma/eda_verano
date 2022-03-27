@@ -122,6 +122,17 @@ public class BinarySearchTree <T extends Comparable<T>>{
 	}
 
 	public void preOrden(){
+		System.out.print("PreOrden:");
+		preOrdenRecursive(this.root);
+		System.out.println();
+	}
+
+	private void preOrdenRecursive(Node node){
+		if(node != null){
+			System.out.print(node.data + " ");
+			preOrdenRecursive(node.left);
+			preOrdenRecursive(node.right);
+		}
 	}
 
 	public void postOrden(){
@@ -149,12 +160,13 @@ public class BinarySearchTree <T extends Comparable<T>>{
 			bst.add(data[i]);
 
 		bst.inOrden();
+		bst.preOrden();
 
 		//System.out.println(bst.search(100000));
 		//System.out.println(bst.search(7));
-		bst.delete(11);
+		//bst.delete(11);
 
-		bst.inOrden();
+		//bst.inOrden();
 	}
 }
 
