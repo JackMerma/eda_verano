@@ -15,7 +15,6 @@ public class BinarySearchTree <T extends Comparable<T>>{
 			right = r;
 			left = l;
 		}
-
 	}
 
 	Node root = null;
@@ -58,7 +57,53 @@ public class BinarySearchTree <T extends Comparable<T>>{
 	}
 
 	public void delete(T dat){
+		this.root = deleteRecursive(dat, this.root);
+	}
 
+	private Node deleteRecursive(T data, Node node){
+		Node aux = node;
+	
+		if(node != null){
+			int value = data.compareTo(node.data);
+			if(value == 0){
+				if(node.right == null && node.left == null){
+					return null;
+				}else{ // 1 hijo o mas
+					T lastLeftSheet = getLastLeftSheet(node.right);
+					node.right = deleteLastLeftSheet(node.right);
+
+					if(lastLeftSheet == null){
+						aux = node.left;
+					}else{
+						aux.data = lastLeftSheet;
+					}
+				}
+			}else if(value < 0){
+				aux.left = deleteRecursive(data, node.left);
+			}else{
+				aux.right = deleteRecursive(data, node.right);
+			}
+		}
+		return aux;
+	}
+
+	private T getLastLeftSheet(Node node){
+		if(node == null)
+			return null;
+
+		if(node.left == null){
+			return node.data;
+		}else{
+			return getLastLeftSheet(node.left);
+		}
+	}
+
+	private Node deleteLastLeftSheet(Node node){
+		if(node == null || node.left == null)
+			return null;
+
+		node.left = deleteLastLeftSheet(node.left);
+		return node;
 	}
 
 	//recorridos
@@ -98,15 +143,18 @@ public class BinarySearchTree <T extends Comparable<T>>{
 	public static void main(String [] args){
 		BinarySearchTree<Integer> bst = new BinarySearchTree<Integer>();
 
-		int [] data = {9,2,5,7,1,35,88,9,3};
+		int [] data = {4,1,10,5,11};
 
 		for(int i=0;i<data.length;i++)
 			bst.add(data[i]);
 
 		bst.inOrden();
 
-		System.out.println(bst.search(100000));
-		System.out.println(bst.search(7));
+		//System.out.println(bst.search(100000));
+		//System.out.println(bst.search(7));
+		bst.delete(11);
+
+		bst.inOrden();
 	}
 }
 
