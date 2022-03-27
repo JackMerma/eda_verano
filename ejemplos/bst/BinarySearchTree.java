@@ -70,6 +70,7 @@ public class BinarySearchTree <T extends Comparable<T>>{
 					return null;
 				}else{ // 1 hijo o mas
 					T lastLeftSheet = getLastLeftSheet(node.right);
+					System.out.println("last:"+lastLeftSheet);
 					node.right = deleteLastLeftSheet(node.right);
 
 					if(lastLeftSheet == null){
@@ -99,8 +100,11 @@ public class BinarySearchTree <T extends Comparable<T>>{
 	}
 
 	private Node deleteLastLeftSheet(Node node){
-		if(node == null || node.left == null)
+		if(node == null)
 			return null;
+		if(node.left == null){
+			return node.right;
+		}
 
 		node.left = deleteLastLeftSheet(node.left);
 		return node;
@@ -165,7 +169,22 @@ public class BinarySearchTree <T extends Comparable<T>>{
 	public static void main(String [] args){
 		BinarySearchTree<Integer> bst = new BinarySearchTree<Integer>();
 
-		int [] data = {4,1,10,5,11};
+		int [] data = {1,10,-1,2,7,20,6,8};
+		/*
+		 * 	  1
+		 * 	/  \
+		 *   /    \
+		 * -1 	  10
+		 *       /   \
+		 *      /     \
+		 *  	 2      20
+		 *  	  \
+		 *  	   \
+		 *  	  	 7
+		 *       / \
+		 *      /   \
+		 *  	 6     8
+		 */
 
 		for(int i=0;i<data.length;i++)
 			bst.add(data[i]);
@@ -173,6 +192,8 @@ public class BinarySearchTree <T extends Comparable<T>>{
 		bst.inOrden();
 		bst.preOrden();
 		bst.postOrden();
+		bst.delete(-1);
+		bst.inOrden();
 
 		//System.out.println(bst.search(100000));
 		//System.out.println(bst.search(7));
